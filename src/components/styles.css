@@ -1,0 +1,27 @@
+.box{
+
+
+    background-color: chocolate;
+    width: 200px;
+    height: 200px;
+}
+.b2{
+
+
+    background-color: chartreuse;
+    width: 500px;
+    height: 500px;
+}
+.b3{
+
+
+    background-color: slateblue;
+    width: 300px;
+    height: 300px;
+}
+
+.col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
