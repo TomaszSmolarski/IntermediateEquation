@@ -1,27 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --container-width: 500px;
+    --container-height: 500px;
+}
+.container{
+    padding: 0;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    width: var(--container-width);
+    height: var(--container-height);
+    border: 2px solid black;
+}
 .box{
 
-
     background-color: chocolate;
-    width: 200px;
-    height: 200px;
+    height: 100%;
+    width: 100%;
+
 }
 .b2{
 
-
     background-color: chartreuse;
-    width: 500px;
-    height: 500px;
+    height: 100%;
+    width: 100%;
 }
 .b3{
-
-
     background-color: slateblue;
-    width: 300px;
-    height: 300px;
+    height: 100%;
+    width: 100%;
 }
 
-.col{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+
+.text-hor{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateZ(-90deg);
+
 }
