@@ -37,22 +37,19 @@
     width: 100%;
 }
 
-#standard-basic{
-    width: 100px;
-
-}
 .span1{
+    display: flex;
     font-size: 30px;
-    color: orange;
     justify-content: left;
+    color: black;
+
 }
 
 .span2{
-    position: relative;
-    left: 50px;
+    display: flex;
+    justify-content: center;
     font-size: 50px;
     color: brown;
-    justify-content: right;
 }
 
 .text-hor{
@@ -78,3 +75,8 @@
     font-size: 40px;
     color: green;
 }
+.body TableRow TableCell InputLabel{
+    display: flex;
+    height: 100px;
+}
+

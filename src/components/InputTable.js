@@ -7,8 +7,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
-import {TableFooter} from "@material-ui/core";
-import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
 
 
@@ -20,7 +18,6 @@ export const InputTable = () => {
         <TableContainer className={"input1"} component={Paper}>
             <Table>
                 <TableHead>
-
                         <TableRow>
                             <TableCell >
                                 <InputLabel htmlFor="component"> </InputLabel>
@@ -37,17 +34,17 @@ export const InputTable = () => {
                         </TableRow>
 
                 </TableHead>
-                <TableBody>
+                <TableBody className={"body"}>
                     <TableRow>
                         <InputLabel htmlFor="component"><span className={"alfa"}>D1</span></InputLabel>
                         <TableCell>
-                        <TextField id="standard-basic" type="number" defaultValue="10" />
-                    </TableCell>
+                             <TextField  type="number" defaultValue="10" />
+                        </TableCell>
                         <TableCell>
-                            <TextField id="standard-basic" type="number" defaultValue="10"  />
+                            <TextField  type="number" defaultValue="10"  />
                         </TableCell>
                         <TableCell >
-                            <TextField id="standard-basic" type="number" defaultValue="10"  />
+                            <TextField   type="number" defaultValue="10"  />
                         </TableCell>
 
                     </TableRow>
@@ -55,49 +52,49 @@ export const InputTable = () => {
                     <TableRow>
                         <InputLabel htmlFor="component"><span className={"alfa"}>D2</span></InputLabel>
                         <TableCell>
-                            <TextField  id="standard-basic" type="number" defaultValue="10"  />
+                            <TextField   type="number" defaultValue="10"  />
                         </TableCell>
                         <TableCell>
-                            <TextField id="standard-basic" type="number"  defaultValue="10" />
+                            <TextField  type="number"  defaultValue="10" />
                         </TableCell>
                         <TableCell >
-                            <TextField id="standard-basic" type="number"  defaultValue="10" />
+                            <TextField  type="number"  defaultValue="10" />
                         </TableCell>
                     </TableRow>
 
                     <TableRow>
                         <InputLabel htmlFor="component"><span className={"alfa"}>D3</span></InputLabel>
                         <TableCell>
-                            <TextField id="standard-basic" type="number"  defaultValue="10" />
+                            <TextField  type="number"  defaultValue="10" />
                         </TableCell>
                         <TableCell>
-                            <TextField id="standard-basic" type="number"  defaultValue="10" />
+                            <TextField  type="number"  defaultValue="10" />
                         </TableCell>
                         <TableCell >
-                            <TextField id="standard-basic" type="number"  defaultValue="10" />
+                            <TextField  type="number"  defaultValue="10" />
                         </TableCell>
                     </TableRow>
 
                     <TableRow>
                         <InputLabel htmlFor="component"><span className={"alfa"}>D4</span></InputLabel>
                         <TableCell>
-                            <TextField id="standard-basic" type="number" defaultValue="10" />
+                            <TextField  type="number" defaultValue="10" />
                         </TableCell>
                         <TableCell>
-                            <TextField id="standard-basic" type="number"  defaultValue="10" />
+                            <TextField  type="number"  defaultValue="10" />
                         </TableCell>
                         <TableCell >
-                            <TextField id="standard-basic" type="number"  defaultValue="10" />
+                            <TextField  type="number"  defaultValue="10" />
                         </TableCell>
                     </TableRow>
 
                     <TableRow>
                         <InputLabel htmlFor="component"><span className={"alfa"}>Cena Z</span></InputLabel>
                         <TableCell>
-                            <TextField id="standard-basic" type="number" defaultValue="10"  />
+                            <TextField  type="number" defaultValue="10"  />
                         </TableCell>
                         <TableCell>
-                            <TextField id="standard-basic" type="number" defaultValue="10"  />
+                            <TextField  type="number" defaultValue="10"  />
                         </TableCell>
 
                     </TableRow>
