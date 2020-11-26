@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
-import {Button, Col, Input, Row} from 'antd';
-import {View} from "../views";
 import "./styles.css"
 import {InputTable} from "./InputTable";
+import {View} from "../views";
+import {OutPutTable} from "./OutputTable";
+import Grid from "@material-ui/core/Grid";
+
+
 
 export const Home = () => {
 
@@ -29,7 +32,7 @@ export const Home = () => {
             odbiorca1: 11,
             odbiorca2: 22,
             cenaZakupu: 33,
-            cenaSprzedazy: 44
+            // cenaSprzedazy: 44
         },
         {
             key: 3,
@@ -37,7 +40,7 @@ export const Home = () => {
             odbiorca1: 11,
             odbiorca2: 22,
             cenaZakupu: 33,
-            cenaSprzedazy: 44
+            // cenaSprzedazy: 44
         }
     ])
 
@@ -49,30 +52,22 @@ export const Home = () => {
     };
 
     return (
-        <View routeName="Home">
-            <>
-                    <Row type="flex" justify="center" gutter={[16, 16]}  align="top">
+        <View >
+            <Grid container spacing={3}>
+                <Grid className={"mygrid"} item xl={5} >
+                    <InputTable/>
+                </Grid>
 
-                        <Col xs={{span: 24, offset: 0}} sm={{span: 24, offset: 0}} md={{span: 24, offset: 0}}
-                             lg={{span: 12, offset: 0}} xxl={{span: 8, offset: 0}}  className="container">
-                                <InputTable data={data} InputOnChange={InputOnChange}/>
-                        </Col>
+                <Grid className={"mygrid"} item xl={5}>
+                    <OutPutTable/>
+                </Grid>
+                <Grid  className={"mygrid"} item xl={2}>
 
-                        <Col xs={{span: 24, offset: 0}} sm={{span: 24, offset: 0}} md={{span: 24, offset: 0}}
-                             lg={{span: 12, offset: 0}} xxl={{span: 8, offset: 0}} className="container">
-                                <div className="box">
-
-                                </div>
-                        </Col>
-
-                        <Col xs={{span: 24, offset: 0}} sm={{span: 24, offset: 0}} md={{span: 24, offset: 0}}
-                             lg={{span: 12, offset: 0}} xxl={{span: 8, offset: 0}} className="container">
-                                <div className="b3">
-
-                                </div>
-                        </Col>
-                    </Row>
-            </>
+                </Grid>
+            </Grid>
         </View>
+
+
+
     );
 }

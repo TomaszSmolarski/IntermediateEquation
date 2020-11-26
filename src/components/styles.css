@@ -23,6 +23,8 @@
     width: 100%;
 
 }
+
+
 .b2{
 
     background-color: chartreuse;
@@ -35,7 +37,23 @@
     width: 100%;
 }
 
+#standard-basic{
+    width: 100px;
 
+}
+.span1{
+    font-size: 30px;
+    color: orange;
+    justify-content: left;
+}
+
+.span2{
+    position: relative;
+    left: 50px;
+    font-size: 50px;
+    color: brown;
+    justify-content: right;
+}
 
 .text-hor{
     position: relative;
@@ -43,4 +61,20 @@
     left: 50%;
     transform: translate(-50%, -50%) rotateZ(-90deg);
 
+}
+.mygrid{
+    height: 600px;
+    background-color: #282c34;
+}
+.alfa{
+    display: flex;
+    justify-content: center;
+    color: blue;
+    font-size: 40px;
+}
+.beta{
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    color: green;
 }

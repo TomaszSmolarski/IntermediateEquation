@@ -1,48 +1,108 @@
-import {Input, InputNumber, Table} from 'antd';
+import React from 'react';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import {TableFooter} from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import InputLabel from "@material-ui/core/InputLabel";
 
 
-const { Column, ColumnGroup } = Table;
 
-
-export const InputTable = ({data, InputOnChange}) => {
-//Math.ceil()
-    const tableHeight = parseFloat(getComputedStyle(document.documentElement)
-        .getPropertyValue('--container-height').slice(0,-2)) - 20 - 110;
-
-
-    const rowHeight = tableHeight/(data.length);
-
-
+export const InputTable = () => {
 
     return (
-        <Table dataSource={data}  pagination={false} bordered
-               onRow = {()=>{return {style: {height: rowHeight}}} }
-               onHeaderRow = {()=>{return {style: {height: 1}}} }
-               ellipsis
-        >
-            <Column title="Dostawca nr" dataIndex="dostawca" key="dostawca"/>
-            <ColumnGroup title="Odbiorcy" >
-                <Column title="Odbiorca nr1" dataIndex="odbiorca1" key="odbiorca1"
-                        render={ (text, record) => <Input onChange={InputOnChange} placeholder="number"
-                                                          bordered={false} type="number" defaultValue={text}
-                                                          id={record.key} name="odbiorca1"/>}
-                />
-                <Column title="Odbiorca nr2" dataIndex="odbiorca2" key="odbiorca2"
-                        render={ (text, record) => <Input onChange={InputOnChange} placeholder="number"
-                                                          bordered={false} type="number" defaultValue={text}
-                                                          id={record.key} name="odbiorca2"/>}
-                />
-            </ColumnGroup>
-            <Column title="Cena zakupu" dataIndex="cenaZakupu" key="cenaZakupu"
-                    render={ (text, record) => <Input onChange={InputOnChange} placeholder="number"
-                                                      bordered={false} type="number" defaultValue={text}
-                                                      id={record.key} name="cenaZakupu"/>}
-            />
-            <Column title="Cena sprzedazy" dataIndex="cenaSprzedazy" key="cenaSprzedazy"
-                    render={ (text, record) => <Input onChange={InputOnChange} placeholder="number"
-                                                      bordered={false} type="number" defaultValue={text}
-                                                      id={record.key} name="cenaSprzedazy"/>}
-            />
-        </Table>
+
+        <TableContainer className={"input1"} component={Paper}>
+            <Table>
+                <TableHead>
+
+                        <TableRow>
+                            <TableCell >
+                                <InputLabel htmlFor="component"> </InputLabel>
+                            </TableCell>
+                            <TableCell >
+                                <InputLabel htmlFor="component"><span className={"beta"}>O1</span></InputLabel>
+                            </TableCell>
+                            <TableCell >
+                                <InputLabel htmlFor="component"><span className={"beta"}>O2</span></InputLabel>
+                            </TableCell>
+                            <TableCell >
+                                <InputLabel htmlFor="component"><span className={"alfa"}>Cena S</span></InputLabel>
+                            </TableCell>
+                        </TableRow>
+
+                </TableHead>
+                <TableBody>
+                    <TableRow>
+                        <InputLabel htmlFor="component"><span className={"alfa"}>D1</span></InputLabel>
+                        <TableCell>
+                        <TextField id="standard-basic" type="number" defaultValue="10" />
+                    </TableCell>
+                        <TableCell>
+                            <TextField id="standard-basic" type="number" defaultValue="10"  />
+                        </TableCell>
+                        <TableCell >
+                            <TextField id="standard-basic" type="number" defaultValue="10"  />
+                        </TableCell>
+
+                    </TableRow>
+
+                    <TableRow>
+                        <InputLabel htmlFor="component"><span className={"alfa"}>D2</span></InputLabel>
+                        <TableCell>
+                            <TextField  id="standard-basic" type="number" defaultValue="10"  />
+                        </TableCell>
+                        <TableCell>
+                            <TextField id="standard-basic" type="number"  defaultValue="10" />
+                        </TableCell>
+                        <TableCell >
+                            <TextField id="standard-basic" type="number"  defaultValue="10" />
+                        </TableCell>
+                    </TableRow>
+
+                    <TableRow>
+                        <InputLabel htmlFor="component"><span className={"alfa"}>D3</span></InputLabel>
+                        <TableCell>
+                            <TextField id="standard-basic" type="number"  defaultValue="10" />
+                        </TableCell>
+                        <TableCell>
+                            <TextField id="standard-basic" type="number"  defaultValue="10" />
+                        </TableCell>
+                        <TableCell >
+                            <TextField id="standard-basic" type="number"  defaultValue="10" />
+                        </TableCell>
+                    </TableRow>
+
+                    <TableRow>
+                        <InputLabel htmlFor="component"><span className={"alfa"}>D4</span></InputLabel>
+                        <TableCell>
+                            <TextField id="standard-basic" type="number" defaultValue="10" />
+                        </TableCell>
+                        <TableCell>
+                            <TextField id="standard-basic" type="number"  defaultValue="10" />
+                        </TableCell>
+                        <TableCell >
+                            <TextField id="standard-basic" type="number"  defaultValue="10" />
+                        </TableCell>
+                    </TableRow>
+
+                    <TableRow>
+                        <InputLabel htmlFor="component"><span className={"alfa"}>Cena Z</span></InputLabel>
+                        <TableCell>
+                            <TextField id="standard-basic" type="number" defaultValue="10"  />
+                        </TableCell>
+                        <TableCell>
+                            <TextField id="standard-basic" type="number" defaultValue="10"  />
+                        </TableCell>
+
+                    </TableRow>
+                </TableBody>
+            </Table>
+        </TableContainer>
     );
 }

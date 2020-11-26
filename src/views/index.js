@@ -2,7 +2,7 @@ import React from 'react';
 import {Layout} from 'antd'
 
 
-const {Content, Sider, Footer, Header} = Layout;
+const {Content, Footer, Header} = Layout;
 
 
 const View = ({children, routeName}) => {
