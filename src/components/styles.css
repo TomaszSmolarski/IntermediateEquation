@@ -3,26 +3,27 @@
     padding: 0;
     box-sizing: border-box;
 }
-:root{
+
+:root {
     --container-width: 550px;
-    --container-height: 500px;
+    --container-height: 600px;
 }
 
 
-
-.b2{
+.b2 {
 
     background-color: chartreuse;
     height: 100%;
     width: 100%;
 }
-.b3{
+
+.b3 {
     background-color: slateblue;
     height: 100%;
     width: 100%;
 }
 
-.span1{
+.span1 {
     display: flex;
     font-size: 20px;
     justify-content: left;
@@ -30,14 +31,14 @@
 
 }
 
-.span2{
+.span2 {
     display: flex;
     justify-content: center;
     font-size: 30px;
     color: brown;
 }
 
-.text-hor{
+.text-hor {
     position: relative;
     top: 50%;
     left: 50%;
@@ -45,48 +46,60 @@
 
 }
 
-tr th, tr td:first-of-type{
+tr th, tr td:first-of-type {
     background-color: #b7eb8f !important;
 }
 
-.mygrid{
+.mygrid {
     padding: 0;
     background-color: #282c34;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+
     border: 2px solid whitesmoke;
 }
-.grid-elem-center{
+
+.grid-elem-center {
     display: flex;
     justify-content: center;
     width: 300px;
     height: var(--container-height);
 }
-.grid-elem{
+
+.grid-elem {
     display: flex;
     justify-content: center;
+
     width: var(--container-width);
     height: var(--container-height);
 }
-.alfa{
+
+.alfa {
     display: flex;
     justify-content: center;
     color: blue;
     font-size: 30px;
 }
+
 .beta {
     display: flex;
     justify-content: center;
     font-size: 30px;
     color: green;
 }
-table{
-    height: 476px;
-}
 
-.calc-text{
+.calc-text {
     text-align: left;
     font-size: 25px;
     color: whitesmoke;
     word-wrap: anywhere;
+}
+
+.output {
+    flex-direction: column;
+    align-items: center;
+}
+
+.pag {
+    background-color: whitesmoke;
 }

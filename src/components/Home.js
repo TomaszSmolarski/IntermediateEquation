@@ -1,70 +1,79 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./styles.css"
 import {InputTable} from "./InputTable";
 import {View} from "../views";
-import {OutPutTable} from "./OutputTable";
+import {OutPutList} from "./OutputList";
 import Grid from "@material-ui/core/Grid";
 
 
-
 export const Home = () => {
-
-    const [data, setData] = useState([
+    //default values
+    const [inputData, setInputData] = useState({
+        popyt_d: [1, 2, 3, 4],
+        podaz_o: [1, 2],
+        cs: [2, 4, 6, 8],
+        cz: [3, 6],
+        o1d: [3, 4, 5, 6],
+        o2d: [31, 41, 51, 61]
+    })
+    const [outputData, setOutputData] = useState([
         {
-            key: 0,
-            dostawca: 1,
-            odbiorca1: 11,
-            odbiorca2: 22,
-            cenaZakupu: 33,
-            cenaSprzedazy: 44
+            popyt_d: [1, 2, 3, 4],
+            podaz_o: [32, 21],
+            o1zj: [3, 4, 5, 6],
+            o2zj: [7, 6, 5, 4],
+            o1ilosc: [5, 6, 7, 8],
+            o2ilosc: [51, 61, 71, 81],
+            alfa: [2, 1, 1, 2],
+            beta: [4, 3]
         },
         {
-            key: 1,
-            dostawca: 2,
-            odbiorca1: 11,
-            odbiorca2: 22,
-            cenaZakupu: 33,
-            cenaSprzedazy: 44
-        },
-        {
-            key: 2,
-            dostawca: 3,
-            odbiorca1: 11,
-            odbiorca2: 22,
-            cenaZakupu: 33,
-            // cenaSprzedazy: 44
-        },
-        {
-            key: 3,
-            dostawca: 4,
-            odbiorca1: 11,
-            odbiorca2: 22,
-            cenaZakupu: 33,
-            // cenaSprzedazy: 44
+            popyt_d: [1, 2, 3, 2],
+            podaz_o: [1, 24],
+            o1zj: [31, 4, 5, 6],
+            o2zj: [7, 6, 52, 4],
+            o1ilosc: [5, 6, 7, 8],
+            o2ilosc: [51, 61, 71, 81],
+            alfa: [2, 12, 1, 2],
+            beta: [2, 3]
         }
     ])
 
+    const InputOnChange = e => {
+        const {id, value, name} = e.target;
+        const newArray = inputData[name].map((e, i) => {
+            if (i === parseInt(id)) {
+                return parseInt(value);
+            }
+            return e;
+        })
+        setInputData({...inputData, [name]: newArray})
+
+    };
+
+    useEffect(() => {
+        //setOutputData(wynik funkcjj obliczającej dane do tabelki 2)
+        //jeżeli brakuje jakiejś zmiennej w tabelce to ma zwrocic [{}] !!!
+    }, [inputData])
+
     return (
-        <View >
-            <Grid container spacing={3} className="mygrid" >
+        <View>
+            <Grid container spacing={3} className="mygrid">
                 <Grid className="grid-elem" item l={12} xl={5}>
 
-                    <InputTable/>
+                    <InputTable InputOnChange={InputOnChange} data={inputData}/>
                 </Grid>
-                <Grid  className="grid-elem-center calc-text"  item l={12} xl={2}>
+                <Grid className="grid-elem-center calc-text" item l={12} xl={2}>
 
-                        <p>GRID XD</p>
+                    <p>GRID XD</p>
 
 
                 </Grid>
-                <Grid className="grid-elem" item l={12} xl={5}>
-                    <OutPutTable/>
+                <Grid className="grid-elem output" item l={12} xl={5}>
+                    <OutPutList data={outputData}/>
                 </Grid>
 
             </Grid>
         </View>
-
-
-
     );
 }
