@@ -36,7 +36,9 @@ export const InputTable = () => {
                 </TableHead>
                 <TableBody className={"body"}>
                     <TableRow>
-                        <InputLabel htmlFor="component"><span className={"alfa"}>D1</span></InputLabel>
+                        <TableCell>
+                            <InputLabel htmlFor="component"><span className={"alfa"}>D1</span></InputLabel>
+                        </TableCell>
                         <TableCell>
                              <TextField  type="number" defaultValue="10" />
                         </TableCell>
@@ -50,7 +52,9 @@ export const InputTable = () => {
                     </TableRow>
 
                     <TableRow>
-                        <InputLabel htmlFor="component"><span className={"alfa"}>D2</span></InputLabel>
+                        <TableCell>
+                            <InputLabel htmlFor="component"><span className={"alfa"}>D2</span></InputLabel>
+                        </TableCell>
                         <TableCell>
                             <TextField   type="number" defaultValue="10"  />
                         </TableCell>
@@ -63,7 +67,10 @@ export const InputTable = () => {
                     </TableRow>
 
                     <TableRow>
-                        <InputLabel htmlFor="component"><span className={"alfa"}>D3</span></InputLabel>
+
+                        <TableCell>
+                            <InputLabel htmlFor="component"><span className={"alfa"}>D3</span></InputLabel>
+                        </TableCell>
                         <TableCell>
                             <TextField  type="number"  defaultValue="10" />
                         </TableCell>
@@ -76,7 +83,10 @@ export const InputTable = () => {
                     </TableRow>
 
                     <TableRow>
-                        <InputLabel htmlFor="component"><span className={"alfa"}>D4</span></InputLabel>
+                        <TableCell>
+                            <InputLabel htmlFor="component"><span className={"alfa"}>D4</span></InputLabel>
+                        </TableCell>
+
                         <TableCell>
                             <TextField  type="number" defaultValue="10" />
                         </TableCell>
@@ -89,7 +99,10 @@ export const InputTable = () => {
                     </TableRow>
 
                     <TableRow>
-                        <InputLabel htmlFor="component"><span className={"alfa"}>Cena Z</span></InputLabel>
+                        <TableCell>
+                            <InputLabel htmlFor="component"><span className={"alfa"}>Cena Z</span></InputLabel>
+                        </TableCell>
+
                         <TableCell>
                             <TextField  type="number" defaultValue="10"  />
                         </TableCell>

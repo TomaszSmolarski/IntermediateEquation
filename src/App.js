@@ -10,7 +10,6 @@ function App() {
     <div className="App">
         <Router history={history}>
             <Routing/>
-
         </Router>
     </div>
   );

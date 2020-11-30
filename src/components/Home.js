@@ -44,26 +44,23 @@ export const Home = () => {
         }
     ])
 
-    const InputOnChange = e =>{
-        const {id, value, name} = e.target;
-        const newData = data;
-        newData[id][name]=parseFloat(value);
-        setData(newData);
-    };
-
     return (
         <View >
-            <Grid container spacing={3}>
-                <Grid className={"mygrid"} item xl={5} >
+            <Grid container spacing={3} className="mygrid" >
+                <Grid className="grid-elem" item l={12} xl={5}>
+
                     <InputTable/>
                 </Grid>
+                <Grid  className="grid-elem-center calc-text"  item l={12} xl={2}>
 
-                <Grid className={"mygrid"} item xl={5}>
+                        <p>GRID XD</p>
+
+
+                </Grid>
+                <Grid className="grid-elem" item l={12} xl={5}>
                     <OutPutTable/>
                 </Grid>
-                <Grid  className={"mygrid"} item xl={2}>
 
-                </Grid>
             </Grid>
         </View>
 
