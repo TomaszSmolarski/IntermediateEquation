@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import "./styles.css"
-import {InputTable} from "./InputTable";
+import {InputTable} from "./intermediateComp/InputTable";
 import {View} from "../views";
-import {OutPutList} from "./OutputList";
+import {OutPutList} from "./intermediateComp/OutputList";
 import Grid from "@material-ui/core/Grid";
-
+import Button from '@material-ui/core/Button';
 
 export const Home = () => {
     //default values
@@ -58,6 +58,9 @@ export const Home = () => {
 
     return (
         <View>
+            <Button variant="contained" color="primary" href="/chains" className="button">
+                Supply Chain
+            </Button>
             <Grid container spacing={3} className="mygrid">
                 <Grid className="grid-elem" item l={12} xl={5}>
 

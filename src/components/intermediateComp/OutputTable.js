@@ -8,7 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import InputLabel from "@material-ui/core/InputLabel";
 import {Img} from 'react-image'
-import x_image from '../images/x.jpg'
+import x_image from '../../images/x.jpg'
 
 const RowItem = ({data, index}) => {
     return (
