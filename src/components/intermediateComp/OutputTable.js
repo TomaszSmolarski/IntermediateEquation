@@ -14,19 +14,19 @@ const RowItem = ({data, index}) => {
     return (
         <TableRow>
             <TableCell>
-                <InputLabel htmlFor="component"><span className={"alfa"}>D1</span></InputLabel>
-                <InputLabel htmlFor="component"><span className={"alfa"}>{data.popyt_d[index]}</span></InputLabel>
+                <InputLabel htmlFor="component"><span className={"beta"}>O{index + 1}</span></InputLabel>
+                <InputLabel htmlFor="component"><span className={"beta"}>{data.podaz_o[index]}</span></InputLabel>
             </TableCell>
             <TableCell>
-                <InputLabel htmlFor="component"><span className={"span1"}>{data.o1zj[index]}</span></InputLabel>
-                <InputLabel htmlFor="component"><span className={"span2"}>{data.o1ilosc[index]}</span></InputLabel>
+                <InputLabel htmlFor="component"><span className={"span1"}>{data.d1zj[index]}</span></InputLabel>
+                <InputLabel htmlFor="component"><span className={"span2"}>{data.d1ilosc[index]}</span></InputLabel>
             </TableCell>
             <TableCell>
-                <InputLabel htmlFor="component"><span className={"span1"}>{data.o2zj[index]}</span></InputLabel>
-                <InputLabel htmlFor="component"><span className={"span2"}>{data.o2ilosc[index]}</span></InputLabel>
+                <InputLabel htmlFor="component"><span className={"span1"}>{data.d2zj[index]}</span></InputLabel>
+                <InputLabel htmlFor="component"><span className={"span2"}>{data.d2ilosc[index]}</span></InputLabel>
             </TableCell>
             <TableCell>
-                <InputLabel htmlFor="component"><span className={"alfa"}>{data.alfa[index]}</span></InputLabel>
+                <InputLabel htmlFor="component"><span className={"beta"}>{data.beta[index]}</span></InputLabel>
             </TableCell>
 
         </TableRow>
@@ -45,17 +45,17 @@ export const OutPutTable = ({data}) => {
                                 <InputLabel htmlFor="component"> </InputLabel>
                             </TableCell>
                             <TableCell>
-                                <InputLabel htmlFor="component"><span className={"beta"}>O1</span></InputLabel>
+                                <InputLabel htmlFor="component"><span className={"alfa"}>D1</span></InputLabel>
                                 <InputLabel htmlFor="component"><span
-                                    className={"beta"}>{data.podaz_o[0]}</span></InputLabel>
+                                    className={"alfa"}>{data.popyt_d[0]}</span></InputLabel>
                             </TableCell>
                             <TableCell>
-                                <InputLabel htmlFor="component"><span className={"beta"}>O2</span></InputLabel>
+                                <InputLabel htmlFor="component"><span className={"alfa"}>D2</span></InputLabel>
                                 <InputLabel htmlFor="component"><span
-                                    className={"beta"}>{data.podaz_o[1]}</span></InputLabel>
+                                    className={"alfa"}>{data.popyt_d[1]}</span></InputLabel>
                             </TableCell>
                             <TableCell>
-                                <InputLabel htmlFor="component"><span className={"alfa"}>Ai</span></InputLabel>
+                                <InputLabel htmlFor="component"><span className={"beta"}>Bi</span></InputLabel>
                             </TableCell>
                         </TableRow>
 
@@ -67,15 +67,15 @@ export const OutPutTable = ({data}) => {
                         <RowItem data={data} index={3}/>
                         <TableRow>
                             <TableCell>
-                                <InputLabel htmlFor="component"><span className={"beta"}>Bj</span></InputLabel>
+                                <InputLabel htmlFor="component"><span className={"alfa"}>Aj</span></InputLabel>
                             </TableCell>
                             <TableCell>
                                 <InputLabel htmlFor="component"><span
-                                    className={"beta"}>{data.beta[0]}</span></InputLabel>
+                                    className={"alfa"}>{data.alfa[0]}</span></InputLabel>
                             </TableCell>
                             <TableCell>
                                 <InputLabel htmlFor="component"><span
-                                    className={"beta"}>{data.beta[1]}</span></InputLabel>
+                                    className={"alfa"}>{data.alfa[1]}</span></InputLabel>
                             </TableCell>
 
                         </TableRow>

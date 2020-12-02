@@ -12,14 +12,14 @@ const RowItem = ({data, index, InputOnChange}) => {
         <TableRow>
             <TableCell>
                 <InputLabel htmlFor="component"><span className={"alfa"}>D1</span></InputLabel>
-                <TextField type="number" name="popyt_d" id={index.toString()} defaultValue={data.popyt_d[index]}
+                <TextField type="number" name="podaz_o" id={index.toString()} defaultValue={data.podaz_o[index]}
                            onChange={InputOnChange}/>
             </TableCell>
         </TableRow>
     )
 };
 export const InputTable = ({data, InputOnChange}) => {
-    return(
+    return (
         <TableContainer className={"input1"} component={Paper}>
             <Table style={{height: "576px"}}>
             </Table>

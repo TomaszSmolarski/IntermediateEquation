@@ -24,7 +24,7 @@ const View = ({children, routeName}) => {
                     textAlign: 'center', color: "#ffffff", backgroundColor: "#282c34",
                     borderTopStyle: "solid", borderTopColor: "#ffffff", borderTopWidth: '1px'
                 }}>
-                    intermediate Equation Solver by Hubert Siewior and Tomasz Smolarski
+                    Intermediate Equation and supply chain Solver by Hubert Siewior and Tomasz Smolarski
                 </Footer>
             </Layout>
         </Layout>

@@ -13,16 +13,16 @@ const RowItem = ({data, index, InputOnChange}) => {
     return (
         <TableRow>
             <TableCell>
-                <InputLabel htmlFor="component"><span className={"alfa"}>D1</span></InputLabel>
-                <TextField type="number" name="popyt_d" id={index.toString()} defaultValue={data.popyt_d[index]}
+                <InputLabel htmlFor="component"><span className={"beta"}>O{index + 1}</span></InputLabel>
+                <TextField type="number" name="podaz_o" id={index.toString()} defaultValue={data.podaz_o[index]}
                            onChange={InputOnChange}/>
             </TableCell>
             <TableCell>
-                <TextField type="number" name="o1d" id={index.toString()} defaultValue={data.o1d[index]}
+                <TextField type="number" name="d1o" id={index.toString()} defaultValue={data.d1o[index]}
                            onChange={InputOnChange}/>
             </TableCell>
             <TableCell>
-                <TextField type="number" name="o2d" id={index.toString()} defaultValue={data.o2d[index]}
+                <TextField type="number" name="d2o" id={index.toString()} defaultValue={data.d2o[index]}
                            onChange={InputOnChange}/>
             </TableCell>
             <TableCell>
@@ -45,17 +45,17 @@ export const InputTable = ({data, InputOnChange}) => {
                             <InputLabel htmlFor="component"/>
                         </TableCell>
                         <TableCell>
-                            <InputLabel htmlFor="component"><span className={"beta"}>O1</span></InputLabel>
-                            <TextField type="number" name="podaz_o" id="0" defaultValue={data.podaz_o[0]}
+                            <InputLabel htmlFor="component"><span className={"alfa"}>D1</span></InputLabel>
+                            <TextField type="number" name="popyt_d" id="0" defaultValue={data.popyt_d[0]}
                                        onChange={InputOnChange}/>
                         </TableCell>
                         <TableCell>
-                            <InputLabel htmlFor="component"><span className={"beta"}>O2</span></InputLabel>
-                            <TextField type="number" name="podaz_o" id="0" defaultValue={data.podaz_o[1]}
+                            <InputLabel htmlFor="component"><span className={"alfa"}>D2</span></InputLabel>
+                            <TextField type="number" name="popyt_d" id="1" defaultValue={data.popyt_d[1]}
                                        onChange={InputOnChange}/>
                         </TableCell>
                         <TableCell>
-                            <InputLabel htmlFor="component"><span className={"alfa"}>CS</span></InputLabel>
+                            <InputLabel htmlFor="component"><span className={"beta"}>CS</span></InputLabel>
                         </TableCell>
                     </TableRow>
 
