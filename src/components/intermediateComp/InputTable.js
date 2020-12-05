@@ -65,7 +65,6 @@ export const InputTable = ({data, InputOnChange}) => {
                     <RowItem data={data} InputOnChange={InputOnChange} index={1}/>
                     <RowItem data={data} InputOnChange={InputOnChange} index={2}/>
                     <RowItem data={data} InputOnChange={InputOnChange} index={3}/>
-
                     <TableRow>
                         <TableCell>
                             <InputLabel htmlFor="component"><span className={"alfa"}>CZ</span></InputLabel>

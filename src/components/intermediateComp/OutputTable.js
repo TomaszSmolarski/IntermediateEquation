@@ -14,7 +14,8 @@ const RowItem = ({data, index}) => {
     return (
         <TableRow>
             <TableCell>
-                <InputLabel htmlFor="component"><span className={"beta"}>O{index + 1}</span></InputLabel>
+                <InputLabel htmlFor="component"><span
+                    className={"beta"}>O{index !== 4 ? index + 1 : 'f'}</span></InputLabel>
                 <InputLabel htmlFor="component"><span className={"beta"}>{data.podaz_o[index]}</span></InputLabel>
             </TableCell>
             <TableCell>
@@ -25,6 +26,12 @@ const RowItem = ({data, index}) => {
                 <InputLabel htmlFor="component"><span className={"span1"}>{data.d2zj[index]}</span></InputLabel>
                 <InputLabel htmlFor="component"><span className={"span2"}>{data.d2ilosc[index]}</span></InputLabel>
             </TableCell>
+            {typeof data.d3ilosc !== 'undefined' &&
+            <TableCell>
+                <InputLabel htmlFor="component"><span className={"span1"}>{data.d3zj[index]}</span></InputLabel>
+                <InputLabel htmlFor="component"><span className={"span2"}>{data.d3ilosc[index]}</span></InputLabel>
+            </TableCell>
+            }
             <TableCell>
                 <InputLabel htmlFor="component"><span className={"beta"}>{data.beta[index]}</span></InputLabel>
             </TableCell>
@@ -36,57 +43,49 @@ const RowItem = ({data, index}) => {
 export const OutPutTable = ({data}) => {
     return (
         <>
-            {Object.keys(data).length !== 0 &&
-            <TableContainer component={Paper}>
-                <Table style={{height: "544px"}}>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>
-                                <InputLabel htmlFor="component"> </InputLabel>
-                            </TableCell>
-                            <TableCell>
-                                <InputLabel htmlFor="component"><span className={"alfa"}>D1</span></InputLabel>
-                                <InputLabel htmlFor="component"><span
-                                    className={"alfa"}>{data.popyt_d[0]}</span></InputLabel>
-                            </TableCell>
-                            <TableCell>
-                                <InputLabel htmlFor="component"><span className={"alfa"}>D2</span></InputLabel>
-                                <InputLabel htmlFor="component"><span
-                                    className={"alfa"}>{data.popyt_d[1]}</span></InputLabel>
-                            </TableCell>
-                            <TableCell>
-                                <InputLabel htmlFor="component"><span className={"beta"}>Bi</span></InputLabel>
-                            </TableCell>
-                        </TableRow>
+            {Object.keys(data).length !== 0 ?
+                <TableContainer component={Paper}>
+                    <Table style={{height: "544px"}}>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>
+                                    <InputLabel htmlFor="component"> </InputLabel>
+                                </TableCell>
+                                {Array(data.popyt_d.length).fill().map((_, i) =>
+                                    <TableCell key={i}>
+                                        <InputLabel htmlFor="component"><span
+                                            className={"alfa"}>D{i !== 2 ? i + 1 : 'f'}</span></InputLabel>
+                                        <InputLabel htmlFor="component"><span
+                                            className={"alfa"}>{data.popyt_d[i]}</span></InputLabel>
+                                    </TableCell>)}
+                                <TableCell>
+                                    <InputLabel htmlFor="component"><span className={"beta"}>Bj</span></InputLabel>
+                                </TableCell>
+                            </TableRow>
 
-                    </TableHead>
-                    <TableBody>
-                        <RowItem data={data} index={0}/>
-                        <RowItem data={data} index={1}/>
-                        <RowItem data={data} index={2}/>
-                        <RowItem data={data} index={3}/>
-                        <TableRow>
-                            <TableCell>
-                                <InputLabel htmlFor="component"><span className={"alfa"}>Aj</span></InputLabel>
-                            </TableCell>
-                            <TableCell>
-                                <InputLabel htmlFor="component"><span
-                                    className={"alfa"}>{data.alfa[0]}</span></InputLabel>
-                            </TableCell>
-                            <TableCell>
-                                <InputLabel htmlFor="component"><span
-                                    className={"alfa"}>{data.alfa[1]}</span></InputLabel>
-                            </TableCell>
+                        </TableHead>
+                        <TableBody>
+                            {Array(data.podaz_o.length).fill().map((_, i) =>
+                                <RowItem data={data} index={i} key={i}/>)}
+                            <TableRow>
+                                <TableCell>
+                                    <InputLabel htmlFor="component"><span className={"alfa"}>Ai</span></InputLabel>
+                                </TableCell>
+                                {Array(data.alfa.length).fill().map((_, i) =>
+                                    <TableCell key={i}>
+                                        <InputLabel htmlFor="component"><span
+                                            className={"alfa"}>{data.alfa[i]}</span></InputLabel>
+                                    </TableCell>)}
 
-                        </TableRow>
-                    </TableBody>
+                            </TableRow>
+                        </TableBody>
 
-                </Table>
-            </TableContainer>
+                    </Table>
+                </TableContainer>
+                :
+                <Img src={x_image} width="544" height="544"/>
             }
-            {Object.keys(data).length === 0 &&
-            <Img src={x_image} width="544" height="544"/>
-            }
+
         </>
 
     );

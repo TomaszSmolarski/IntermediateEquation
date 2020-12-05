@@ -9,20 +9,6 @@
     --container-height: 600px;
 }
 
-
-.b2 {
-
-    background-color: chartreuse;
-    height: 100%;
-    width: 100%;
-}
-
-.b3 {
-    background-color: slateblue;
-    height: 100%;
-    width: 100%;
-}
-
 .span1 {
     display: flex;
     font-size: 20px;
@@ -34,7 +20,7 @@
 .span2 {
     display: flex;
     justify-content: center;
-    font-size: 30px;
+    font-size: 25px;
     color: brown;
 }
 
@@ -78,13 +64,13 @@ tr th, tr td:first-of-type {
     display: flex;
     justify-content: center;
     color: blue;
-    font-size: 30px;
+    font-size: 22px;
 }
 
 .beta {
     display: flex;
     justify-content: center;
-    font-size: 30px;
+    font-size: 22px;
     color: green;
 }
 
