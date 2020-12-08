@@ -78,8 +78,8 @@ export default class MyData {
 
 
     showGrid() {
-        for (let i = 0; i < this.col; i++) {
-            for (let j = 0; j < this.row; j++) {
+        for (let i = 0; i < this.col-1; i++) {
+            for (let j = 0; j < this.row-1; j++) {
                 console.log("unitProfit: " + this.myGrid[i][j].unitProfit + " transportation: " + this.myGrid[i][j].transportation)
             }
         }
@@ -334,10 +334,19 @@ export default class MyData {
         }
         let minValue = Math.min.apply(null,transportion_value)
 
+        for (let i = 0; i < 4; i++) {
+            let index = this.indexOfRoute[i]
+            if(i%2===0){
+                this.myGrid[index[1]][index[0]].transportation += minValue
+            }
+            else {
+                this.myGrid[index[1]][index[0]].transportation -= minValue
+            }
+        }
+
     }
 
     iteration(){
-        let  step = 1
         this.showGrid()
         this.setIndexOfRoute()
         this.getAllCost()
@@ -345,7 +354,6 @@ export default class MyData {
         let maxRow = this.delta.map(function(row){ return Math.max.apply(Math, row); });
         let maxPositiveValue  = Math.max.apply(null, maxRow);
         if(maxPositiveValue>0){
-            step++
             this.setAfla_Beta()
             this.setDelta()
             this.getAllCost()
