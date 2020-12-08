@@ -22,11 +22,8 @@ export default class MyData {
         this.income = 0
         this.arrayOfData = []
 
-
-
     }
     getStart(supply, demand, cost, supplyCost, demandCost){
-        console.log(arguments.length)
         if(arguments.length>0){
             this.row = demand.length + 1;
             this.col = supply.length + 1;
@@ -210,20 +207,22 @@ export default class MyData {
         if(this.balanced){
             for (let i = 0; i < this.col; i++) {
                 for (let j = 0; j < this.row; j++) {
-                    if(this.myGrid[i][j].transportation > 0){}
-                    this.indexOfTransportation[step][0] = i
-                    this.indexOfTransportation[step][1] = j
-                    step += 1
+                    if(this.myGrid[i][j].transportation > 0){
+                        this.indexOfTransportation[step][0] = i
+                        this.indexOfTransportation[step][1] = j
+                        step += 1
+                    }
                 }
             }
         }
         else {
             for (let i = this.col-1; i >= 0; i--) {
                 for (let j = this.row-1; j>=0; j--) {
-                    if(this.myGrid[i][j].transportation > 0){}
-                    this.indexOfTransportation[step][0] = i
-                    this.indexOfTransportation[step][1] = j
-                    step += 1
+                    if(this.myGrid[i][j].transportation > 0){
+                        this.indexOfTransportation[step][0] = i
+                        this.indexOfTransportation[step][1] = j
+                        step += 1
+                    }
                 }
             }
         }
@@ -257,6 +256,8 @@ export default class MyData {
         for(let index of this.indexOfTransportation){
             let indexX = index[0]
             let indexY = index[1]
+
+
             if(this.alfa[indexX][1] !== 1 && this.beta[indexY][1] === 1){
                 this.alfa[indexX][0] = this.myGrid[indexX][indexY].unitProfit - this.beta[indexY][0]
                 this.alfa[indexX][1] = 1
@@ -371,11 +372,6 @@ export default class MyData {
         this.setIndexOfRoute()
         this.getAllCost()
         this.setArrayOfData()
-        console.log(this.costOfTransportation)
-        console.log(this.costOfPurchase)
-        console.log(this.costOfPurchase+this.costOfTransportation)
-        console.log(this.income)
-        console.log(this.income - this.costOfTransportation-this.costOfPurchase)
         let maxRow = this.delta.map(function(row){ return Math.max.apply(Math, row); });
         let maxPositiveValue  = Math.max.apply(null, maxRow);
         if(maxPositiveValue>0){
@@ -384,7 +380,6 @@ export default class MyData {
             this.getAllCost()
             this.setIndexOfRoute()
             this.setArrayOfData()
-            console.log(this.costOfTransportation)
         }
 
     }
@@ -402,9 +397,18 @@ export default class MyData {
             arrayOfTrasnport.push(trasnport)
             arrayOfUnitProfit.push(unitProfit)
         }
+        let alfa = []
+        let beta = []
+        for (let a of this.alfa) {
+            alfa.push(a[0])
+        }
+        for (let b of this.beta){
+            beta.push(b[0])
+        }
+
         let profit = this.income - this.costOfTransportation-this.costOfPurchase
         let allCost =  this.costOfPurchase+this.costOfTransportation
-            this.arrayOfData.push([arrayOfUnitProfit,arrayOfTrasnport,this.alfa,this.beta,this.costOfTransportation,this.costOfPurchase,this.income,allCost,profit ])
+        this.arrayOfData.push([arrayOfUnitProfit,arrayOfTrasnport,alfa,beta,this.costOfTransportation,this.costOfPurchase,this.income,allCost,profit ])
     }
 
 
