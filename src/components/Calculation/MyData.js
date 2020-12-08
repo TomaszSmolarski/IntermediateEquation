@@ -360,6 +360,7 @@ export default class MyData {
             this.setIndexOfRoute()
             console.log(this.costOfTransportation)
 
+
         }
 
 
