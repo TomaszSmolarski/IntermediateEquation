@@ -277,20 +277,14 @@ export default class MyData {
             let arrayOfIndex = this.getIndexDelta(maxPositiveValue);
             let indexY = arrayOfIndex[0]
             let indexX = arrayOfIndex[1]
-            console.log("XD")
             this.indexOfRoute[0][0] = indexX
             this.indexOfRoute[0][1] = indexY
 
             for (let col= 0; col < this.col-1; col++) {
                 if(col !== indexY){
                     for (let row = 0; row <this.row-1 ; row++) {
-                        // console.log(this.myGrid[indexY][row].transportation)
-                        // console.log(this.myGrid[col][row].transportation)
-                        // console.log(this.myGrid[col][indexX].transportation)
                         if(this.myGrid[indexY][row].transportation > 0){
                             if(this.myGrid[col][row].transportation > 0 && this.myGrid[col][indexX].transportation > 0){
-                                // console.log("xDDDDDDDDDD")
-
                                 this.indexOfRoute[1][0] = indexX
                                 this.indexOfRoute[1][1] = col
                                 this.indexOfRoute[2][0] = row
@@ -335,7 +329,7 @@ export default class MyData {
         for (let i = 0; i < 4; i++) {
             if(i>0){
                 let index = this.indexOfRoute[i]
-                // transportion_value.push(this.myGrid[index[1]][index[0]].transportation)
+                transportion_value.push(this.myGrid[index[1]][index[0]].transportation)
             }
         }
         let minValue = Math.min.apply(null,transportion_value)
