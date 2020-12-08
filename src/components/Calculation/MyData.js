@@ -370,7 +370,7 @@ export default class MyData {
         this.showGrid()
         this.setIndexOfRoute()
         this.getAllCost()
-        this.arrayOfData.push([this.myGrid,this.alfa,this.beta,this.costOfTransportation,this.costOfPurchase,this.income])
+        this.setArrayOfData()
         console.log(this.costOfTransportation)
         console.log(this.costOfPurchase)
         console.log(this.costOfPurchase+this.costOfTransportation)
@@ -383,14 +383,29 @@ export default class MyData {
             this.setDelta()
             this.getAllCost()
             this.setIndexOfRoute()
-            this.arrayOfData.push([this.myGrid,this.alfa,this.beta,this.costOfTransportation,this.costOfPurchase,this.income])
+            this.setArrayOfData()
             console.log(this.costOfTransportation)
         }
 
-
     }
 
-
+    setArrayOfData(){
+        let arrayOfTrasnport = []
+        let arrayOfUnitProfit = []
+        for (let i = 0; i < this.col; i++) {
+            let trasnport = []
+            let unitProfit = []
+            for (let j = 0; j < this.row; j++) {
+                trasnport.push(this.myGrid[i][j].transportation)
+                unitProfit.push(this.myGrid[i][j].unitProfit)
+            }
+            arrayOfTrasnport.push(trasnport)
+            arrayOfUnitProfit.push(unitProfit)
+        }
+        let profit = this.income - this.costOfTransportation-this.costOfPurchase
+        let allCost =  this.costOfPurchase+this.costOfTransportation
+            this.arrayOfData.push([arrayOfUnitProfit,arrayOfTrasnport,this.alfa,this.beta,this.costOfTransportation,this.costOfPurchase,this.income,allCost,profit ])
+    }
 
 
 }

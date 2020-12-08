@@ -26,6 +26,7 @@ export const Home = () => {
             d2ilosc: [51, 61, 71, 81],
             alfa: [2, 1],
             beta: [4, 3, 1, 2]
+
         },
         {
             popyt_d: [12, 22, 33],
