@@ -18,18 +18,35 @@ export default class MyData {
         this.delta = new Array(this.col-1)
         this.indexOfRoute = new Array(4)
         this.costOfTransportation = 0
+        this.costOfPurchase = 0
+        this.income = 0
+        this.arrayOfData = []
+
+
+
+    }
+    getStart(supply, demand, cost, supplyCost, demandCost){
+        console.log(arguments.length)
+        if(arguments.length>0){
+            this.row = demand.length + 1;
+            this.col = supply.length + 1;
+            this.supply = supply;
+            this.demand = demand;
+            this.cost = cost;
+            this.supplyCost = supplyCost;
+            this.demandCost = demandCost;
+        }
 
         this.setMygrid()
-
         this.setSupply_Demand()
         this.getIndexOfUnitProfit()
         this.setTransportation()
-        // this.showGrid()
         this.updateIndexOfTransportion()
         this.setAfla_Beta()
         this.setDelta()
         this.iteration()
-
+        console.log(this.arrayOfData)
+        return this.arrayOfData
     }
 
 
@@ -300,14 +317,19 @@ export default class MyData {
         }
     }
     getAllCost(){
+        this.income =0
         this.costOfTransportation = 0
+        this.costOfPurchase = 0
         for (let i = 0; i < this.col-1; i++) {
             for (let j = 0; j < this.row-1; j++) {
                 if(this.myGrid[i][j].transportation > 0){
                     this.costOfTransportation += this.myGrid[i][j].transportation * this.cost[i][j]
+                    this.costOfPurchase += this.supplyCost[i] * this.myGrid[i][j].transportation
+                    this.income += this.demandCost[j] * this.myGrid[i][j].transportation
                 }
             }
         }
+
     }
 
     getIndexDelta(value){
@@ -317,7 +339,6 @@ export default class MyData {
                 if(this.delta[i][j] === value && arrayOfIndex.length===0){
                     arrayOfIndex.push(i)
                     arrayOfIndex.push(j)
-
                 }
             }
         }
@@ -343,14 +364,18 @@ export default class MyData {
                 this.myGrid[index[1]][index[0]].transportation -= minValue
             }
         }
-
     }
 
     iteration(){
         this.showGrid()
         this.setIndexOfRoute()
         this.getAllCost()
+        this.arrayOfData.push([this.myGrid,this.alfa,this.beta,this.costOfTransportation,this.costOfPurchase,this.income])
         console.log(this.costOfTransportation)
+        console.log(this.costOfPurchase)
+        console.log(this.costOfPurchase+this.costOfTransportation)
+        console.log(this.income)
+        console.log(this.income - this.costOfTransportation-this.costOfPurchase)
         let maxRow = this.delta.map(function(row){ return Math.max.apply(Math, row); });
         let maxPositiveValue  = Math.max.apply(null, maxRow);
         if(maxPositiveValue>0){
@@ -358,9 +383,8 @@ export default class MyData {
             this.setDelta()
             this.getAllCost()
             this.setIndexOfRoute()
+            this.arrayOfData.push([this.myGrid,this.alfa,this.beta,this.costOfTransportation,this.costOfPurchase,this.income])
             console.log(this.costOfTransportation)
-
-
         }
 
 
