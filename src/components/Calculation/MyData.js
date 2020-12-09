@@ -55,12 +55,6 @@ export default class MyData {
             this.indexOfRoute[i] = new Array(2)
         }
 
-        // for (let i = 0; i < 4; i++) {
-        //     for (let j = 0; j < 2; j++) {
-        //         this.indexOfRoute = 0
-        //     }
-        // }
-
         for (let i = 0; i < this.col; i++) {
             this.alfa[i] = new Array(2)
         }
