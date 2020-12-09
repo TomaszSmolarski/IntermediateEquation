@@ -385,8 +385,8 @@ export default class MyData {
             console.log("==========================================================")
             this.setAfla_Beta()
             this.setDelta()
-            this.getAllCost()
             this.setIndexOfRoute()
+            this.getAllCost()
             this.setArrayOfData()
         }
         this.showGrid()
@@ -409,8 +409,6 @@ export default class MyData {
             alfaL = this.alfa.length-1
             betaL = this.beta.length-1
         }
-
-
         for (let i = 0; i < col; i++) {
             let trasnport = []
             let unitProfit = []
@@ -421,15 +419,12 @@ export default class MyData {
             arrayOfTrasnport.push(trasnport)
             arrayOfUnitProfit.push(unitProfit)
         }
-
-
         for (let i=0; i<alfaL;i++) {
             alfa.push(this.alfa[i][0])
         }
         for (let i=0; i<betaL;i++){
             beta.push(this.beta[i][0])
         }
-
         let profit = this.income - this.costOfTransportation-this.costOfPurchase
         let allCost =  this.costOfPurchase+this.costOfTransportation
         this.arrayOfData.push({
