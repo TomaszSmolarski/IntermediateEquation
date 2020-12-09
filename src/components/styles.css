@@ -50,6 +50,7 @@ tr th, tr td:first-of-type {
     justify-content: center;
     width: 300px;
     height: var(--container-height);
+
 }
 
 .grid-elem {
@@ -76,9 +77,11 @@ tr th, tr td:first-of-type {
 
 .calc-text {
     text-align: left;
-    font-size: 25px;
+    font-size: 20px;
     color: whitesmoke;
     word-wrap: anywhere;
+    line-height: 50%;
+    overflow: scroll;
 }
 
 .output {

@@ -5,41 +5,19 @@ import {View} from "../views";
 import {OutPutList} from "./intermediateComp/OutputList";
 import Grid from "@material-ui/core/Grid";
 import Button from '@material-ui/core/Button';
-
+import MyData from "./Calculation/MyData";
+import Divider from '@material-ui/core/Divider';
 export const Home = () => {
     //default values
     const [inputData, setInputData] = useState({
-        popyt_d: [1, 2],
-        podaz_o: [1, 2, 3, 4],
-        cs: [2, 4, 6, 8],
-        cz: [3, 6],
-        d1o: [3, 4, 5, 6],
-        d2o: [31, 41, 51, 61]
+        popyt_d: [15, 25],
+        podaz_o: [10,10,10,10],
+        cs: [10,8,10,8],
+        cz: [5,5],
+        d1o: [5,2,4,3],
+        d2o: [3,1,7,3]
     })
-    const [outputData, setOutputData] = useState([
-        {
-            popyt_d: [1, 2],
-            podaz_o: [32, 21, 3, 4],
-            d1zj: [3, 4, 5, 6],
-            d2zj: [7, 6, 5, 4],
-            d1ilosc: [5, 6, 7, 8],
-            d2ilosc: [51, 61, 71, 81],
-            alfa: [2, 1],
-            beta: [4, 3, 1, 2]
-
-        },
-        {
-            popyt_d: [12, 22, 33],
-            podaz_o: [32, 21, 32, 43, 55],
-            d1zj: [3, 4, 51, 6, 7],
-            d2zj: [7, 6, 52, 4, 8],
-            d3zj: [1, 2, 3, 4, 5],
-            d1ilosc: [5, 6, 7, 8, 5],
-            d2ilosc: [51, 61, 71, 81, 22],
-            d3ilosc: [9, 8, 7, 6, 5],
-            alfa: [2, 1, 4],
-            beta: [4, 3, 1, 2, 5]
-        },
+    const [outputData, setOutputData] = useState([{}
     ])
 
     const InputOnChange = e => {
@@ -55,8 +33,40 @@ export const Home = () => {
     };
 
     useEffect(() => {
-        //setOutputData(wynik funkcjj obliczającej dane do tabelki 2)
-        //jeżeli brakuje jakiejś zmiennej w tabelce to ma zwrocic [{}] !!!
+        const mydata = new MyData();
+        const popyt = [...inputData.popyt_d];
+        const podaz = [...inputData.podaz_o];
+        let isNaN = false;
+        for (let inputDataKey in inputData) {
+            if(inputData[inputDataKey].includes(NaN)){
+                isNaN = true;
+                break;
+            }
+        }
+        if (!isNaN){
+            const data = mydata.getStart(popyt,podaz,[inputData.d1o, inputData.d2o],inputData.cz,inputData.cs)
+            const d = []
+            data.forEach(value => d.push(
+                {
+                    popyt_d: inputData.popyt_d,
+                    podaz_o: inputData.podaz_o,
+                    d1zj: value.arrayOfUnitProfit[0],
+                    d2zj: value.arrayOfUnitProfit[1],
+                    d1ilosc: value.arrayOfTrasnport[0],
+                    d2ilosc: value.arrayOfTrasnport[1],
+                    alfa: value.alfa,
+                    beta: value.beta,
+                    costOfTransportation: value.costOfTransportation,
+                    costOfPurchase: value.costOfPurchase,
+                    income: value.income,
+                    allCost: value.allCost,
+                    profit: value.profit
+                }
+            ))
+            setOutputData(d)
+        }else{
+            setOutputData([{}])
+        }
     }, [inputData])
 
     return (
@@ -70,7 +80,27 @@ export const Home = () => {
                     <InputTable InputOnChange={InputOnChange} data={inputData}/>
                 </Grid>
                 <Grid className="grid-elem-center calc-text" item l={12} xl={2}>
-                    <p>WYNIKI</p>
+                    {Object.keys(outputData).length > 0&&
+                        <div>
+                            <p>WYNIKI:</p>
+                            <p></p>
+                            {Object.keys(outputData[0]).length>0&&
+                                outputData.map((value, index) =>
+                                <div>
+                                    <Divider style={{ background: 'whitesmoke'}}/>
+                                    <p></p>
+                                    <p>Iteracja {index+1}</p>
+                                    <p>koszt transortu = {value.costOfTransportation}</p>
+                                    <p>koszt zakupu = {value.costOfPurchase}</p>
+                                    <p>income = {value.income}</p>
+                                    <p>całościowy koszt = {value.allCost}</p>
+                                    <p>profit = {value.profit}</p>
+
+                                </div>
+                            )}
+                        </div>
+                    }
+
                 </Grid>
                 <Grid className="grid-elem output" item l={12} xl={5}>
                     <OutPutList data={outputData}/>
