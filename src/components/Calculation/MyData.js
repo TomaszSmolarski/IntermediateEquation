@@ -95,9 +95,11 @@ export default class MyData {
 
 
     showGrid() {
+        let step =0
         for (let i = 0; i < this.col-1; i++) {
             for (let j = 0; j < this.row-1; j++) {
-                console.log("unitProfit: " + this.myGrid[i][j].unitProfit + " transportation: " + this.myGrid[i][j].transportation)
+                console.log("unitProfit: " + this.myGrid[i][j].unitProfit + " transportation: " + this.myGrid[i][j].transportation+"   step :"+ step)
+                step++
             }
         }
     }
@@ -386,32 +388,46 @@ export default class MyData {
             this.getAllCost()
             this.setIndexOfRoute()
             this.setArrayOfData()
-            this.showGrid()
-            console.log("==========================================================")
         }
+        this.showGrid()
+        console.log("==========================================================")
 
     }
 
     setArrayOfData(){
         let arrayOfTrasnport = []
         let arrayOfUnitProfit = []
-        for (let i = 0; i < this.col; i++) {
+        let alfa = []
+        let beta = []
+        let col = this.col
+        let row = this.row
+        let alfaL = this.alfa.length
+        let betaL = this.beta.length
+        if(this.balanced){
+            col = this.col-1
+            row = this.row-1
+            alfaL = this.alfa.length-1
+            betaL = this.beta.length-1
+        }
+
+
+        for (let i = 0; i < col; i++) {
             let trasnport = []
             let unitProfit = []
-            for (let j = 0; j < this.row; j++) {
+            for (let j = 0; j < row; j++) {
                 trasnport.push(this.myGrid[i][j].transportation)
                 unitProfit.push(this.myGrid[i][j].unitProfit)
             }
             arrayOfTrasnport.push(trasnport)
             arrayOfUnitProfit.push(unitProfit)
         }
-        let alfa = []
-        let beta = []
-        for (let a of this.alfa) {
-            alfa.push(a[0])
+
+
+        for (let i=0; i<alfaL;i++) {
+            alfa.push(this.alfa[i][0])
         }
-        for (let b of this.beta){
-            beta.push(b[0])
+        for (let i=0; i<betaL;i++){
+            beta.push(this.beta[i][0])
         }
 
         let profit = this.income - this.costOfTransportation-this.costOfPurchase

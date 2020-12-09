@@ -8,7 +8,7 @@ import MyData from "./components/Calculation/MyData";
 
 function App() {
       const mydata = new MyData()
-      mydata.getStart([10,10,10,10],[15,25],[[5,3],[2,1],[4,7],[3,3]],[3,5,4,3],[13,16])
+      mydata.getStart([15,25],[10,10,10,10],[[5,2,4,3],[3,1,7,3]],[5,5],[10,8,10,8])
   return (
     <div className="App">
         <Router history={history}>
