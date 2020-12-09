@@ -34,8 +34,12 @@ export const Home = () => {
 
     useEffect(() => {
         const mydata = new MyData();
+
         const popyt = [...inputData.popyt_d];
         const podaz = [...inputData.podaz_o];
+        const popyt2 = [...inputData.popyt_d];
+        const podaz2 = [...inputData.podaz_o];
+
         let isNaN = false;
         for (let inputDataKey in inputData) {
             if(inputData[inputDataKey].includes(NaN)){
@@ -44,25 +48,51 @@ export const Home = () => {
             }
         }
         if (!isNaN){
-            const data = mydata.getStart(popyt,podaz,[inputData.d1o, inputData.d2o],inputData.cz,inputData.cs)
+            const data = mydata.getStart(popyt,podaz,[inputData.d1o, inputData.d2o],inputData.cz,inputData.cs);
             const d = []
-            data.forEach(value => d.push(
-                {
-                    popyt_d: inputData.popyt_d,
-                    podaz_o: inputData.podaz_o,
-                    d1zj: value.arrayOfUnitProfit[0],
-                    d2zj: value.arrayOfUnitProfit[1],
-                    d1ilosc: value.arrayOfTrasnport[0],
-                    d2ilosc: value.arrayOfTrasnport[1],
-                    alfa: value.alfa,
-                    beta: value.beta,
-                    costOfTransportation: value.costOfTransportation,
-                    costOfPurchase: value.costOfPurchase,
-                    income: value.income,
-                    allCost: value.allCost,
-                    profit: value.profit
-                }
-            ))
+            const sum_p = popyt2.reduce((a, b) => a + b, 0);
+            const sum_podaz = podaz2.reduce((a, b) => a + b, 0);
+            if (sum_p!==sum_podaz){
+                popyt2.push(sum_podaz);
+                podaz2.push(sum_p);
+                data.forEach(value => d.push(
+                    {
+                        popyt_d: popyt2,
+                        podaz_o: podaz2,
+                        d1zj: value.arrayOfUnitProfit[0],
+                        d2zj: value.arrayOfUnitProfit[1],
+                        d3zj: value.arrayOfUnitProfit[2],
+                        d1ilosc: value.arrayOfTrasnport[0],
+                        d2ilosc: value.arrayOfTrasnport[1],
+                        d3ilosc: value.arrayOfTrasnport[2],
+                        alfa: value.alfa,
+                        beta: value.beta,
+                        costOfTransportation: value.costOfTransportation,
+                        costOfPurchase: value.costOfPurchase,
+                        income: value.income,
+                        allCost: value.allCost,
+                        profit: value.profit
+                    }
+                ))
+            }else{
+                data.forEach(value => d.push(
+                    {
+                        popyt_d: popyt2,
+                        podaz_o: podaz2,
+                        d1zj: value.arrayOfUnitProfit[0],
+                        d2zj: value.arrayOfUnitProfit[1],
+                        d1ilosc: value.arrayOfTrasnport[0],
+                        d2ilosc: value.arrayOfTrasnport[1],
+                        alfa: value.alfa,
+                        beta: value.beta,
+                        costOfTransportation: value.costOfTransportation,
+                        costOfPurchase: value.costOfPurchase,
+                        income: value.income,
+                        allCost: value.allCost,
+                        profit: value.profit
+                    }
+                ))
+            }
             setOutputData(d)
         }else{
             setOutputData([{}])

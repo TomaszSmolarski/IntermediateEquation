@@ -428,6 +428,8 @@ export default class MyData {
         let profit = this.income - this.costOfTransportation-this.costOfPurchase
         let allCost =  this.costOfPurchase+this.costOfTransportation
         this.arrayOfData.push({
+            popyt: this.supply,
+            podaz: this.demand,
             arrayOfUnitProfit: arrayOfUnitProfit,
             arrayOfTrasnport: arrayOfTrasnport,
             alfa: alfa,
