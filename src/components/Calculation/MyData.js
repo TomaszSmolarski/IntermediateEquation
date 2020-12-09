@@ -112,7 +112,6 @@ export default class MyData {
         let demandSum = this.demand.reduce((a, b) => a + b, 0)
         this.supply.push(demandSum)
         this.demand.push(supplySum)
-
     }
 
     getIndexOfUnitProfit() {

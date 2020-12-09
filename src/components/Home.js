@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import MyData from "./Calculation/MyData";
 import Divider from '@material-ui/core/Divider';
 export const Home = () => {
-    //default values
+    //default value
     const [inputData, setInputData] = useState({
         popyt_d: [15, 25],
         podaz_o: [10,10,10,10],
@@ -37,8 +37,8 @@ export const Home = () => {
 
         const popyt = [...inputData.popyt_d];
         const podaz = [...inputData.podaz_o];
-        const popyt2 = [...inputData.popyt_d];
-        const podaz2 = [...inputData.podaz_o];
+        const supply_tmp = [...inputData.popyt_d];
+        const demand_tmp = [...inputData.podaz_o];
 
         let isNaN = false;
         for (let inputDataKey in inputData) {
@@ -50,15 +50,15 @@ export const Home = () => {
         if (!isNaN){
             const data = mydata.getStart(popyt,podaz,[inputData.d1o, inputData.d2o],inputData.cz,inputData.cs);
             const d = []
-            const sum_p = popyt2.reduce((a, b) => a + b, 0);
-            const sum_podaz = podaz2.reduce((a, b) => a + b, 0);
-            if (sum_p!==sum_podaz){
-                popyt2.push(sum_podaz);
-                podaz2.push(sum_p);
+            const sumSupply = supply_tmp.reduce((a, b) => a + b, 0);
+            const sumDemand = demand_tmp.reduce((a, b) => a + b, 0);
+            if (sumSupply!==sumDemand){
+                supply_tmp.push(sumDemand);
+                demand_tmp.push(sumSupply);
                 data.forEach(value => d.push(
                     {
-                        popyt_d: popyt2,
-                        podaz_o: podaz2,
+                        popyt_d: supply_tmp,
+                        podaz_o: demand_tmp,
                         d1zj: value.arrayOfUnitProfit[0],
                         d2zj: value.arrayOfUnitProfit[1],
                         d3zj: value.arrayOfUnitProfit[2],
@@ -77,8 +77,8 @@ export const Home = () => {
             }else{
                 data.forEach(value => d.push(
                     {
-                        popyt_d: popyt2,
-                        podaz_o: podaz2,
+                        popyt_d: supply_tmp,
+                        podaz_o: demand_tmp,
                         d1zj: value.arrayOfUnitProfit[0],
                         d2zj: value.arrayOfUnitProfit[1],
                         d1ilosc: value.arrayOfTrasnport[0],
@@ -106,7 +106,6 @@ export const Home = () => {
             </Button>
             <Grid container spacing={3} className="mygrid">
                 <Grid className="grid-elem" item l={12} xl={5}>
-
                     <InputTable InputOnChange={InputOnChange} data={inputData}/>
                 </Grid>
                 <Grid className="grid-elem-center calc-text" item l={12} xl={2}>

@@ -4,11 +4,28 @@ import {View} from "../views";
 import Grid from "@material-ui/core/Grid";
 import {InputTable} from "./supplyChainComp/InputTable";
 import Button from "@material-ui/core/Button";
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 
 export const SupplyChain = () => {
     const [inputData, setInputData] = useState({
-
+        supplier: [100,200,300],
+        receiver: [150,100,250],
+        brokerNumber: 1,
+        route: [
+            {
+                from: "supplier",
+                fromIndex: 1,
+                to: "receiver",
+                rowIndex: 2,
+            },
+            {
+                from: "supplier",
+                fromIndex: 2,
+                to: "receiver",
+                rowIndex: 1,
+            }
+        ]
     })
     const InputOnChange = e => {
         const {id, value, name} = e.target;
@@ -22,7 +39,6 @@ export const SupplyChain = () => {
 
     };
     const handleOnSubmit =()=>{
-
     }
     return(
         <View>
