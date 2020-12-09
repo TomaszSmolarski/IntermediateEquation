@@ -1,25 +1,26 @@
 import Cell from "./Cell"
 
 export default class MyData {
-    constructor(supply, demand, cost, supplyCost, demandCost) {
-        this.row = demand.length + 1;
-        this.col = supply.length + 1;
-        this.supply = supply;
-        this.demand = demand;
-        this.cost = cost;
-        this.supplyCost = supplyCost;
-        this.demandCost = demandCost;
+    constructor() {
+        this.row = 0
+        this.col = 0
+        this.supply = []
+        this.demand = []
+        this.cost = []
+        this.supplyCost = []
+        this.demandCost = []
         this.balanced = true;
-        this.myGrid = new Array(this.col)
-        this.indexOfUnitProfit = new Array(this.col*this.row)
-        this.indexOfTransportation =  new Array(this.col*this.row)
-        this.alfa = new Array(this.col)
-        this.beta = new Array(this.row)
-        this.delta = new Array(this.col-1)
-        this.indexOfRoute = new Array(4)
+        this.myGrid = []
+        this.indexOfUnitProfit = []
+        this.indexOfTransportation =  []
+        this.alfa = []
+        this.beta = []
+        this.delta = []
+        this.indexOfRoute = []
         this.costOfTransportation = 0
         this.costOfPurchase = 0
         this.income = 0
+        this.available = true
         this.arrayOfData = []
 
     }
@@ -32,6 +33,14 @@ export default class MyData {
             this.cost = cost;
             this.supplyCost = supplyCost;
             this.demandCost = demandCost;
+            this.myGrid = new Array(this.col)
+            this.indexOfUnitProfit = new Array(this.col*this.row)
+            this.indexOfTransportation =  new Array(this.col*this.row)
+            this.alfa = new Array(this.col)
+            this.beta = new Array(this.row)
+            this.delta = new Array(this.col-1)
+            this.indexOfRoute = new Array(4)
+
         }
 
         this.setMygrid()
@@ -286,17 +295,19 @@ export default class MyData {
         let maxRow = this.delta.map(function(row){ return Math.max.apply(Math, row); });
         let maxPositiveValue  = Math.max.apply(null, maxRow);
         if(maxPositiveValue>0){
+
             let arrayOfIndex = this.getIndexDelta(maxPositiveValue);
             let indexY = arrayOfIndex[0]
             let indexX = arrayOfIndex[1]
             this.indexOfRoute[0][0] = indexX
             this.indexOfRoute[0][1] = indexY
-
+            this.available=false
             for (let col= 0; col < this.col-1; col++) {
                 if(col !== indexY){
                     for (let row = 0; row <this.row-1 ; row++) {
                         if(this.myGrid[indexY][row].transportation > 0){
                             if(this.myGrid[col][row].transportation > 0 && this.myGrid[col][indexX].transportation > 0){
+                                this.available=true
                                 this.indexOfRoute[1][0] = indexX
                                 this.indexOfRoute[1][1] = col
                                 this.indexOfRoute[2][0] = row
@@ -308,6 +319,7 @@ export default class MyData {
                     }
                 }
             }
+            if(this.available)
             this.setRoute()
         }
     }
@@ -349,7 +361,6 @@ export default class MyData {
             }
         }
         let minValue = Math.min.apply(null,transportion_value)
-
         for (let i = 0; i < 4; i++) {
             let index = this.indexOfRoute[i]
             if(i%2===0){
@@ -363,17 +374,22 @@ export default class MyData {
 
     iteration(){
         this.showGrid()
+        console.log("==========================================================")
         this.setIndexOfRoute()
         this.getAllCost()
         this.setArrayOfData()
         let maxRow = this.delta.map(function(row){ return Math.max.apply(Math, row); });
         let maxPositiveValue  = Math.max.apply(null, maxRow);
-        if(maxPositiveValue>0){
+        if(maxPositiveValue>0 && this.available){
+            this.showGrid()
+            console.log("==========================================================")
             this.setAfla_Beta()
             this.setDelta()
             this.getAllCost()
             this.setIndexOfRoute()
             this.setArrayOfData()
+            this.showGrid()
+            console.log("==========================================================")
         }
 
     }

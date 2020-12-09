@@ -7,8 +7,8 @@ import {history} from './history'
 import MyData from "./components/Calculation/MyData";
 
 function App() {
-     const mydata = new MyData([20, 20],[10, 12, 18],[[4, 7, 2], [8, 10, 14]],[6, 9],[15, 14, 16])
-      mydata.getStart([20, 20],[10, 12, 18],[[4, 7, 2], [8, 10, 14]],[6, 9],[15, 14, 16])
+      const mydata = new MyData()
+      mydata.getStart([10,10,10,10],[15,25],[[5,3],[2,1],[4,7],[3,3]],[3,5,4,3],[13,16])
   return (
     <div className="App">
         <Router history={history}>
