@@ -286,7 +286,6 @@ export default class MyData {
                else {
                    this.delta[i][j] =  0
                }
-
             }
         }
     }
@@ -295,7 +294,6 @@ export default class MyData {
         let maxRow = this.delta.map(function(row){ return Math.max.apply(Math, row); });
         let maxPositiveValue  = Math.max.apply(null, maxRow);
         if(maxPositiveValue>0){
-
             let arrayOfIndex = this.getIndexDelta(maxPositiveValue);
             let indexY = arrayOfIndex[0]
             let indexX = arrayOfIndex[1]
