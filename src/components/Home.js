@@ -122,9 +122,9 @@ export const Home = () => {
                                     <p>Iteracja {index+1}</p>
                                     <p>koszt transortu = {value.costOfTransportation}</p>
                                     <p>koszt zakupu = {value.costOfPurchase}</p>
-                                    <p>income = {value.income}</p>
+                                    <p>dochód = {value.income}</p>
                                     <p>całościowy koszt = {value.allCost}</p>
-                                    <p>profit = {value.profit}</p>
+                                    <p>zysk = {value.profit}</p>
 
                                 </div>
                             )}
