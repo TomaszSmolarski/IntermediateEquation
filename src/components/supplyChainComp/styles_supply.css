@@ -1,0 +1,11 @@
+tr td {
+    background-color: #f1f1f1 !important;
+}
+.text{
+    display: flex;
+    justify-content: left;
+    color: black;
+    font-size: 15px;
+}
+
+
