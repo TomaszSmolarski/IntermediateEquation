@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import "./styles.css"
+import "./intermediateComp/styles.css"
 import {View} from "../views";
 import Grid from "@material-ui/core/Grid";
 import {InputTable} from "./supplyChainComp/InputTable";
 import Button from "@material-ui/core/Button";
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-
 
 export const SupplyChain = () => {
     const [inputData, setInputData] = useState({

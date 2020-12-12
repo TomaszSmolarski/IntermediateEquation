@@ -33,33 +33,9 @@
 }
 
 tr th, tr td:first-of-type {
-    background-color: #b7eb8f !important;
+    background-color: #b7eb8f ;
 }
 
-.mygrid {
-    padding: 0;
-    background-color: #282c34;
-    display: flex;
-    justify-content: center;
-
-    border: 2px solid whitesmoke;
-}
-
-.grid-elem-center {
-    display: flex;
-    justify-content: center;
-    width: 300px;
-    height: var(--container-height);
-
-}
-
-.grid-elem {
-    display: flex;
-    justify-content: center;
-
-    width: var(--container-width);
-    height: var(--container-height);
-}
 
 .alfa {
     display: flex;
@@ -73,15 +49,6 @@ tr th, tr td:first-of-type {
     justify-content: center;
     font-size: 22px;
     color: green;
-}
-
-.calc-text {
-    text-align: left;
-    font-size: 20px;
-    color: whitesmoke;
-    word-wrap: anywhere;
-    line-height: 50%;
-    overflow: scroll;
 }
 
 .output {

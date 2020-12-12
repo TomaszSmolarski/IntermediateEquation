@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Pagination from '@material-ui/lab/Pagination';
 import {OutPutTable} from "./OutputTable";
-
+import "./styles.css"
 export const OutPutList = ({data}) => {
 
     const [iteration, setIteration] = useState(0)

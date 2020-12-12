@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import "./styles.css"
+
 import {InputTable} from "./intermediateComp/InputTable";
 import {View} from "../views";
 import {OutPutList} from "./intermediateComp/OutputList";
@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from '@material-ui/core/Button';
 import MyData from "./Calculation/MyData";
 import Divider from '@material-ui/core/Divider';
+import './styles.css'
 export const Home = () => {
     //default value
     const [inputData, setInputData] = useState({
