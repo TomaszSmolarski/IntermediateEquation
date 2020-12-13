@@ -56,8 +56,6 @@ export default class MyData {
     }
 
 
-
-
     setMygrid() {
 
         for (let i = 0; i < 4; i++) {

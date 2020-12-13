@@ -40,6 +40,10 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
+
+
+
+
 const RowItemNodes = ({data, index, InputOnChange}) => {
     return (
         <TableRow>
@@ -93,24 +97,94 @@ export const InputTable = ({data, InputOnChange}) => {
 
     const classes = useStyles();
 
+    // const [inputData, setInputData] = useState({
+    //     supplier: [100, 200, 300],
+    //     receiver: [150, 100, 250],
+    //     brokerNumber: [1,1,1],
+    //     route: [
+    //         {
+    //             from: "supplier",
+    //             fromIndex: 1,
+    //             to: "receiver",
+    //             rowIndex: 2,
+    //         },
+    //         {
+    //             from: "supplier",
+    //             fromIndex: 2,
+    //             to: "receiver",
+    //             rowIndex: 1,
+    //         }
+    //     ]
+    // })
+
     const [inputData, setInputData] = useState({
-        supplier: [100, 200, 300],
-        receiver: [150, 100, 250],
-        brokerNumber: 1,
-        route: [
-            {
-                from: "supplier",
-                fromIndex: 1,
-                to: "receiver",
-                rowIndex: 2,
-            },
-            {
-                from: "supplier",
-                fromIndex: 2,
-                to: "receiver",
-                rowIndex: 1,
-            }
-        ]
+        nodes:[{
+            "id":1,
+            "value":250,
+            "type":"Supplier"
+        },{
+            "id":2,
+            "value":300,
+            "type":"Supplier"
+        },{
+            "id":3,
+            "value":-120,
+            "type":"Receiver"
+        },{
+            "id":4,
+            "value":-250,
+            "type":"Receiver"
+        },{
+            "id":5,
+            "value":-100,
+            "type":"Receiver"
+        },{
+            "id":6,
+            "value":0,
+            "type":"Broker"
+        }],
+        edges:[{
+            "from":1,
+            "to":3,
+            "cost":3
+        },{
+            "from":1,
+            "to":6,
+            "cost":5
+        },{
+            "from":2,
+            "to":1,
+            "cost":2
+        },{
+            "from":2,
+            "to":6,
+            "cost":6
+        },{
+            "from":2,
+            "to":5,
+            "cost":2
+        },{
+            "from":6,
+            "to":3,
+            "cost":5
+        },{
+            "from":6,
+            "to":4,
+            "cost":4
+        },{
+            "from":6,
+            "to":5,
+            "cost":1
+        },{
+            "from":3,
+            "to":4,
+            "cost":8
+        },{
+            "from":4,
+            "to":5,
+            "cost":4
+        }]
+
     })
 
 
@@ -123,6 +197,9 @@ export const InputTable = ({data, InputOnChange}) => {
         console.log(e)
     }
     const [node, setNode] = useState('');
+    const [from, setFrom] = useState('');
+    const [to, setTo] = useState('');
+
 
     return (
         <TableContainer component={Paper}>
@@ -203,24 +280,24 @@ export const InputTable = ({data, InputOnChange}) => {
                             className={classes.formElement}
                             labelId="demo-simple-select-filled-label"
                             id="demo-simple-select-filled"
-                            value={node}
-                            onChange={(event) => setNode(event.target.value)}
+                            value={from}
+                            onChange={(event) => setFrom(event.target.value)}
                         >
-                            <MenuItem value={10}>Supplier</MenuItem>
-                            <MenuItem value={20}>Receiver</MenuItem>
-                            <MenuItem value={30}>Broker</MenuItem>
+                            <MenuItem value={10}>Node1</MenuItem>
+                            <MenuItem value={20}>Node2</MenuItem>
+                            <MenuItem value={30}>Node3</MenuItem>
                         </Select>
 
                         <Select
                             className={classes.formElement}
                             labelId="demo-simple-select-filled-label"
                             id="demo-simple-select-filled"
-                            value={node}
-                            onChange={(event) => setNode(event.target.value)}
+                            value={to}
+                            onChange={(event) => setTo(event.target.value)}
                         >
-                            <MenuItem value={10}>Supplier</MenuItem>
-                            <MenuItem value={20}>Receiver</MenuItem>
-                            <MenuItem value={30}>Broker</MenuItem>
+                            <MenuItem value={10}>Node1</MenuItem>
+                            <MenuItem value={20}>Node2</MenuItem>
+                            <MenuItem value={30}>Node3</MenuItem>
                         </Select>
                         <TextField variant="outlined"
                                    type="number" name="nodeValue" id="value" defaultValue={0}
