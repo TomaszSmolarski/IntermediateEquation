@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import MyData from "./Calculation/MyData";
 import Divider from '@material-ui/core/Divider';
 import './styles.css'
-export const Home = () => {
+export const Intermediate = () => {
     //default value
     const [inputData, setInputData] = useState({
         popyt_d: [15, 25],
@@ -105,7 +105,7 @@ export const Home = () => {
             <Button variant="contained" color="primary" href="/chains" className="button">
                 Supply Chain
             </Button>
-            <Grid container spacing={3} className="mygrid">
+            <Grid container spacing={3} className="my-grid">
                 <Grid className="grid-elem" item l={12} xl={5}>
                     <InputTable InputOnChange={InputOnChange} data={inputData}/>
                 </Grid>

@@ -1,11 +1,42 @@
 tr td {
     background-color: #f1f1f1 !important;
 }
-.text{
+
+.text {
     display: flex;
     justify-content: left;
     color: black;
     font-size: 15px;
 }
 
+.paper {
+    width: 100%;
+    overflow-x: auto;
+    margin: auto;
+    height: 200px;
+}
 
+.form-element {
+    width: 25%;
+
+}
+
+.table-column {
+    width: 20%;
+}
+
+.form-nodes {
+    width: 100%;
+    display: flex;
+    flex-direction: row !important;
+}
+
+.head {
+    position: sticky;
+    top: 0
+}
+
+.calc-button {
+    position: relative;
+    top: 14px
+}
