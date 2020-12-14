@@ -12,11 +12,14 @@ import {InputEdgeTable} from "./supplyChainComp/InputEdgeTable";
 import {InputNodeForm} from "./supplyChainComp/InputNodeForm";
 import {InputEdgeForm} from "./supplyChainComp/InputEdgeForm";
 import Divider from "@material-ui/core/Divider";
+import {calculate} from "./supplyChainComp/Calculate";
+import API from "../services/API";
 
 
 
 
 export const SupplyChain = () => {
+
     const [inputData, setInputData] = useState({
         nodes: [{
             "id": 1,
@@ -228,9 +231,14 @@ export const SupplyChain = () => {
             amount: 255
         },]
     })
-    const handleCalculate = (e) => {
-        //wywołanie funkcji liczącej
-        //setResult()
+    const handleCalculate = async (e) => {
+
+        e.preventDefault();
+        let obj = {}
+        API.get('/')
+            .then((result) => obj=result)
+            .catch((error) => (console.log(error)))
+
     }
 
     return (
