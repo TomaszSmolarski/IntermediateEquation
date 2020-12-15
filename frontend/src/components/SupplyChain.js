@@ -12,8 +12,6 @@ import {InputEdgeTable} from "./supplyChainComp/InputEdgeTable";
 import {InputNodeForm} from "./supplyChainComp/InputNodeForm";
 import {InputEdgeForm} from "./supplyChainComp/InputEdgeForm";
 import Divider from "@material-ui/core/Divider";
-import {calculate} from "./supplyChainComp/Calculate";
-import API from "../services/API";
 
 
 
@@ -231,13 +229,21 @@ export const SupplyChain = () => {
             amount: 255
         },]
     })
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(inputData)
+    };
     const handleCalculate = async (e) => {
 
         e.preventDefault();
-        let obj = {}
-        API.get('/')
-            .then((result) => obj=result)
-            .catch((error) => (console.log(error)))
+        const obj = await fetch('http://127.0.0.1:8080/api',requestOptions)
+
+        const data = await obj.json();
+        setResult(data)
 
     }
 
