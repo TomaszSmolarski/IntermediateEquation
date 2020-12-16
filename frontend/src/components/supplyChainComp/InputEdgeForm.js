@@ -38,14 +38,14 @@ export const InputEdgeForm = ({edge, handleEdgeChange, handleEdgeSubmit, inputDa
                                type="number" name="cost" id="cost" defaultValue={edge.cost}
                                className="form-element"
                                onChange={handleEdgeChange}/>
-                    <TextField variant="filled" label="MIN"
-                               type="number" name="min" id="min" defaultValue={edge.min}
-                               className="form-element"
-                               onChange={handleEdgeChange}/>
-                    <TextField variant="filled" label="MAX"
-                               type="number" name="max" id="max" defaultValue={edge.max}
-                               className="form-element"
-                               onChange={handleEdgeChange}/>
+                    {/*<TextField variant="filled" label="MIN"*/}
+                    {/*           type="number" name="min" id="min" defaultValue={edge.min}*/}
+                    {/*           className="form-element"*/}
+                    {/*           onChange={handleEdgeChange}/>*/}
+                    {/*<TextField variant="filled" label="MAX"*/}
+                    {/*           type="number" name="max" id="max" defaultValue={edge.max}*/}
+                    {/*           className="form-element"*/}
+                    {/*           onChange={handleEdgeChange}/>*/}
                     <Button variant="filled" className="form-element" type="submit">
                         ADD EDGE
                     </Button>

@@ -213,21 +213,22 @@ export const SupplyChain = () => {
     }
 
     const [result, setResult] = useState({
-        //example
-        overallCast: 111,
-        edges: [{
-            from: 1,
-            to: 2,
-            amount: 11
-        },{
-            from: 2,
-            to: 3,
-            amount: 22
-        },{
-            from: 3,
-            to: 4,
-            amount: 255
-        },]
+//example
+//         allCost: 111,
+//         edges: [{
+//             from: 1,
+//             to: 2,
+//             amount: 11
+//         },{
+//             from: 2,
+//             to: 3,
+//             amount: 22
+//         },{
+//             from: 3,
+//             to: 4,
+//             amount: 255
+//         },]
+
     })
     const requestOptions = {
         method: 'POST',
@@ -275,7 +276,7 @@ export const SupplyChain = () => {
                         <p>WYNIKI:</p>
                         <p></p>
 
-                        <p>KOSZT CAŁOŚCIOWY: {result.overallCast}</p>
+                        <p>KOSZT CAŁOŚCIOWY: {result.allCost}</p>
                         <p>KRAWĘDZIE:</p>
                              {result.edges.map((value, index) =>
                             <div>

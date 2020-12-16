@@ -59,26 +59,26 @@ const RowItemEdge = ({data, editIdx, i, stopEditing, startEditing, handleRemove,
                     <InputLabel htmlFor="component"><span>{data.cost}</span></InputLabel>
                 )}
             </TableCell>
-            <TableCell>
-                {currentlyEditing ? (
-                    <TextField variant="outlined"
-                               type="number" name="min" id="min" defaultValue={data.min}
-                               onChange={event => handleChange(event, i)}
-                    />
-                ) : (
-                    <InputLabel htmlFor="component"><span>{data.min}</span></InputLabel>
-                )}
-            </TableCell>
-            <TableCell>
-                {currentlyEditing ? (
-                    <TextField variant="outlined"
-                               type="number" name="max" id="max" defaultValue={data.max}
-                               onChange={event => handleChange(event, i)}
-                    />
-                ) : (
-                    <InputLabel htmlFor="component"><span>{data.max}</span></InputLabel>
-                )}
-            </TableCell>
+            {/*<TableCell>*/}
+            {/*    {currentlyEditing ? (*/}
+            {/*        <TextField variant="outlined"*/}
+            {/*                   type="number" name="min" id="min" defaultValue={data.min}*/}
+            {/*                   onChange={event => handleChange(event, i)}*/}
+            {/*        />*/}
+            {/*    ) : (*/}
+            {/*        <InputLabel htmlFor="component"><span>{data.min}</span></InputLabel>*/}
+            {/*    )}*/}
+            {/*</TableCell>*/}
+            {/*<TableCell>*/}
+            {/*    {currentlyEditing ? (*/}
+            {/*        <TextField variant="outlined"*/}
+            {/*                   type="number" name="max" id="max" defaultValue={data.max}*/}
+            {/*                   onChange={event => handleChange(event, i)}*/}
+            {/*        />*/}
+            {/*    ) : (*/}
+            {/*        <InputLabel htmlFor="component"><span>{data.max}</span></InputLabel>*/}
+            {/*    )}*/}
+            {/*</TableCell>*/}
             <TableCell>
                 {currentlyEditing ? (
                     <CheckIcon onClick={() => stopEditing()}/>
@@ -102,8 +102,8 @@ export const InputEdgeTable = ({inputData, editId, handleEdgeRowChange, handleEd
                         <TableCell>FROM</TableCell>
                         <TableCell>TO</TableCell>
                         <TableCell>COST</TableCell>
-                        <TableCell>MIN</TableCell>
-                        <TableCell>MAX</TableCell>
+                        {/*<TableCell>MIN</TableCell>*/}
+                        {/*<TableCell>MAX</TableCell>*/}
                         <TableCell>EDIT</TableCell>
                         <TableCell>DELETE</TableCell>
                     </TableRow>
