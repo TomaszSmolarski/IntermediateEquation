@@ -1,124 +1,150 @@
 import pulp
 
-def calculate_optimal_net_flow(nodes, edges):
-    """
-    Calculates most optimal flow in network using linear optimization
-    :param nodes: Contains list of dict contains id and value keys.
-                    If value is grater than zero -> it's supplier
-                    If value is less than zero -> it's demand
-                    If value is zero -> it's intermediary
-                  Example: [{'id':1, 'value':2}]
-    :param edges: list of dicts containing from and to node id connection, and transportation cost.
-                    Example: [{'from':1, 'to':2, 'cost': 3}]
-    :return: edges list with flow that goes trough it as edges and overall_cost as optimized value,
-             example: ['optimized_value': 12, 'edges':{'from':1, 'to':2, 'amount': 3}]
-    """
 
-    # TODO: don't forget to make input validation
-    optimization_model = pulp.LpProblem("Net flow optimization problem", pulp.const.LpMinimize)
+class Solver:
+    def __init__(self, nodes, edges):
+        self.edges = edges
+        self.nodes = nodes
+        self.solver = pulp.LpProblem("Solver", pulp.const.LpMinimize)
+        self.from_nodes = []
+        self.to_nodes = []
+        self.variables = []
+        self.setFrom_To_Nodes()
+        self.setVariables()
+        self.addObjectiveFunction()
+        self.addConstraints()
+        self.solveProblem()
 
-    from_indexes = [edge['from'] for edge in edges]
-    to_indexes = [edge['to'] for edge in edges]
+    def setFrom_To_Nodes(self):
+        for edge in self.edges:
+            self.from_nodes.append(int(edge['from']))
+            self.to_nodes.append(int(edge['to']))
 
-    variables = pulp.LpVariable.dicts("Edges", (from_indexes, to_indexes), lowBound=0, cat=pulp.const.LpInteger)
+    def setVariables(self):
+        self.variables = pulp.LpVariable.dicts("Edges", (self.from_nodes, self.to_nodes), lowBound=0,
+                                               cat=pulp.const.LpInteger)
+        print(self.variables)
 
-    optimization_model += pulp.lpSum([variables[edge['from']][edge['to']] * edge['cost'] for edge in edges])
+    def addObjectiveFunction(self):
+        self.solver += pulp.lpSum([self.variables[edge['from']][edge['to']] * int(edge['cost']) for edge in self.edges])
 
+    def addConstraints(self):
+        for node in self.nodes:
+            supplier = filter(lambda edge: int(node['id']) == int(edge['from']), self.edges)
+            receiver = filter(lambda edge: int(node['id']) == int(edge['to']), self.edges)
+            list_of_variables_for_node = [self.variables[edge['from']][edge['to']] for edge in supplier] + \
+                                         [-1 * self.variables[edge['from']][edge['to']] for edge in receiver]
 
+            if int(node['value']) == 0:
+                self.solver += pulp.lpSum(variable for variable in list_of_variables_for_node) == abs(
+                    int(node['value']))
+            elif int(node['value']) > 0:
+                self.solver += pulp.lpSum(variable for variable in list_of_variables_for_node) >= abs(
+                    int(node['value']))
+            else:
+                self.solver += pulp.lpSum(-1 * variable for variable in list_of_variables_for_node) >= abs(
+                    int(node['value']))
 
+    def solveProblem(self):
+        self.solver.solve()
 
-    for node in nodes:
-        plus_edges = filter(lambda edge: edge['from'] == node['id'], edges)
-        minus_edges = filter(lambda edge: edge['to'] == node['id'], edges)
-        variables_list = [variables[edge['from']][edge['to']] for edge in plus_edges] + \
-                         [-1 * variables[edge['from']][edge['to']] for edge in minus_edges]
-
-        cost = node['value']
-        if cost == 0:
-            optimization_model += pulp.lpSum(-1*variable for variable in variables_list) == abs(cost)
-        elif cost > 0:
-            optimization_model += pulp.lpSum(variables_list) <= abs(cost)
-        else:
-            optimization_model += pulp.lpSum(-1*variable for variable in variables_list) >= abs(cost)
-
-
-    optimization_model.solve()
-
-    result_edges = list(map(lambda edge: map_to_result_edge(edge, variables), edges))
-
-    return {'overallCost': pulp.value(optimization_model.objective), 'edges': result_edges}
+    def returnResults(self):
+        results = list(map(lambda edge: map_to_result_edge(edge, self.variables), self.edges))
+        return {'allCost': pulp.value(self.solver.objective), 'edges': results}
 
 
 def map_to_result_edge(edge: dict, variables_dict) -> dict:
-    from_id, to_id, _ = edge.values()
-
+    from_id, to_id, cost, min_, max_ = edge.values()
     return {'from': from_id, 'to': to_id, 'amount': variables_dict[from_id][to_id].value()}
 
 
 if __name__ == "__main__":
     nodes = [{
-            "id": 1,
-            "value": 250
-        }, {
-            "id": 2,
-            "value": 300
-        }, {
-            "id": 3,
-            "value": -120
-        }, {
-            "id": 4,
-            "value": -250
-        }, {
-            "id": 5,
-            "value": -100
-        }, {
-            "id": 6,
-            "value": 0
-        }
-    ]
+        "id": 1,
+        "value": 250,
+        "type": "Supplier"
+    }, {
+        "id": 2,
+        "value": 300,
+        "type": "Supplier"
+    }, {
+        "id": 3,
+        "value": -120,
+        "type": "Receiver"
+    }, {
+        "id": 4,
+        "value": -250,
+        "type": "Receiver"
+    }, {
+        "id": 5,
+        "value": -100,
+        "type": "Receiver"
+    }, {
+        "id": 6,
+        "value": 0,
+        "type": "Broker"
+    }]
     edges = [{
-            "from": 1,
-            "to": 6,
-            "cost": 5
-        }, {
-            "from": 1,
-            "to": 3,
-            "cost": 3
-        }, {
-            "from": 2,
-            "to": 1,
-            "cost": 2
-        }, {
-            "from": 2,
-            "to": 6,
-            "cost": 6
-        }, {
-            "from": 2,
-            "to": 5,
-            "cost": 2
-        }, {
-            "from": 3,
-            "to": 4,
-            "cost": 8
-        }, {
-            "from": 4,
-            "to": 5,
-            "cost": 4
-        }, {
-            "from": 6,
-            "to": 3,
-            "cost": 5
-        }, {
-            "from": 6,
-            "to": 4,
-            "cost": 4
-        }, {
-            "from": 6,
-            "to": 5,
-            "cost": 1
-        }
-    ]
+        "from": 1,
+        "to": 3,
+        "cost": 3,
+        "min": 30,
+        "max": 50
 
-
-    calculate_optimal_net_flow(nodes, edges)
-    print(calculate_optimal_net_flow(nodes, edges))
+    }, {
+        "from": 1,
+        "to": 6,
+        "cost": 5,
+        "min": 0,
+        "max": 150
+    }, {
+        "from": 2,
+        "to": 1,
+        "cost": 2,
+        "min": 0,
+        "max": False
+    }, {
+        "from": 2,
+        "to": 6,
+        "cost": 6,
+        "min": 0,
+        "max": False
+    }, {
+        "from": 2,
+        "to": 5,
+        "cost": 2,
+        "min": 0,
+        "max": False
+    }, {
+        "from": 6,
+        "to": 3,
+        "cost": 5,
+        "min": 0,
+        "max": False
+    }, {
+        "from": 6,
+        "to": 4,
+        "cost": 4,
+        "min": 0,
+        "max": False
+    }, {
+        "from": 6,
+        "to": 5,
+        "cost": 1,
+        "min": 0,
+        "max": False
+    }, {
+        "from": 3,
+        "to": 4,
+        "cost": 8,
+        "min": 0,
+        "max": False
+    }, {
+        "from": 4,
+        "to": 5,
+        "cost": 4,
+        "min": 0,
+        "max": False
+    }]
+    solver = Solver(nodes, edges)
+    print(solver.returnResults())
