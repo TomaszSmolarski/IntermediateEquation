@@ -39,7 +39,7 @@ class Solver:
                 self.solver += pulp.lpSum(variable for variable in list_of_variables_for_node) == abs(
                     int(node['value']))
             elif int(node['value']) > 0:
-                self.solver += pulp.lpSum(variable for variable in list_of_variables_for_node) >= abs(
+                self.solver += pulp.lpSum(variable for variable in list_of_variables_for_node) <= abs(
                     int(node['value']))
             else:
                 self.solver += pulp.lpSum(-1 * variable for variable in list_of_variables_for_node) >= abs(

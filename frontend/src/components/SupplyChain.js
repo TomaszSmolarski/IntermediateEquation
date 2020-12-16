@@ -48,63 +48,43 @@ export const SupplyChain = () => {
             "from": 1,
             "to": 3,
             "cost": 3,
-            "min": 30,
-            "max": 50
 
         }, {
             "from": 1,
             "to": 6,
             "cost": 5,
-            "min": 0,
-            "max": 150
         }, {
             "from": 2,
             "to": 1,
             "cost": 2,
-            "min": 0,
-            "max": false
         }, {
             "from": 2,
             "to": 6,
             "cost": 6,
-            "min": 0,
-            "max": false
         }, {
             "from": 2,
             "to": 5,
             "cost": 2,
-            "min": 0,
-            "max": false
         }, {
             "from": 6,
             "to": 3,
             "cost": 5,
-            "min": 0,
-            "max": false
         }, {
             "from": 6,
             "to": 4,
             "cost": 4,
-            "min": 0,
-            "max": false
         }, {
             "from": 6,
             "to": 5,
             "cost": 1,
-            "min": 0,
-            "max": false
         }, {
             "from": 3,
             "to": 4,
             "cost": 8,
-            "min": 0,
-            "max": false
         }, {
             "from": 4,
             "to": 5,
             "cost": 4,
-            "min": 0,
-            "max": false
         }]
     })
     const [editId, setEditId] = useState({
